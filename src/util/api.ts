@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 export const API = axios.create({
-  baseURL: 'https://port-0-ku-hackathon-2024-back-m32mykqd6aabb332.sel4.cloudtype.app/api',
-  // baseURL: 'http://localhost:8080/api',
-  timeout: 5000,
+  // baseURL: 'https://port-0-ku-hackathon-2024-back-m32mykqd6aabb332.sel4.cloudtype.app/api',
+  baseURL: 'http://localhost:8080/api',
+  timeout: 30000,
   withCredentials: true,
 });
 
@@ -11,15 +11,10 @@ export const API = axios.create({
 API.interceptors.request.use(
     async config => {
       // Retrieve the token from secure storage
-      // const accessToken = await localStorage.getItem('accessToken');
-      // if (accessToken) {
-      //   config.headers.Authorization = `Bearer ${accessToken}`;
-      // }
-
-      // 요청 데이터를 URLSearchParams로 변환
-      // if (config.data && config.headers["Content-Type"] === "application/x-www-form-urlencoded") {
-      //   config.data = new URLSearchParams(config.data).toString();
-      // }
+      const accessToken = await localStorage.getItem('accessToken');
+      if (accessToken) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
 
       return config;
     },

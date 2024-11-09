@@ -19,8 +19,9 @@ const SignUpPage = () => {
         email,
         password,
       };
-      await API.post("/profile/join", requestBody)
-      navigate("/main/diary");
+      const res = await API.post("/profile/join", requestBody)
+      alert(res.data);
+      navigate("/login");
     } catch (e: any) {
       alert(e?.response?.data?.message);
     }

@@ -17,9 +17,12 @@ const LoginPage = () => {
         password,
         "remember-me": true
       };
-      await API.post("/login", requestBody, {
+      const res = await API.post("/login", requestBody, {
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
       })
+      const {accessToken, refreshToken} = res.data;
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
       navigate("/main/diary");
     } catch (e: any) {
       alert(e?.response?.data?.message);
