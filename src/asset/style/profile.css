@@ -1,0 +1,25 @@
+.profile-container{
+  padding: 30px 30px;
+
+}
+.profile-container .title{
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.profile-container .color-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-container .color-item .title{
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 0;
+}

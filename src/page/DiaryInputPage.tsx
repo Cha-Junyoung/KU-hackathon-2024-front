@@ -6,6 +6,9 @@ import {DoubleLeftOutlined, DoubleRightOutlined} from '@ant-design/icons';
 import TypingTextComponent from "../component/TypingTextComponent";
 import TextArea from "antd/es/input/TextArea";
 import {API} from "../util/api";
+import LoadingEmoji from "../component/LoadingEmoji";
+import {useRecoilState} from "recoil";
+import menuAtom from "../recoil/menu";
 // import {useTypingAnime} from "../component/TypingTextComponent";
 
 const progressButtonStyle: CSSProperties = {minWidth: "15px", height: "15px", marginRight: "15px"}
@@ -21,31 +24,58 @@ interface IQuestionList {
 const DiaryInputPage = () => {
   const [step, setStep] = useState<0 | 1 | 2>(0)
   const [question, setQuestion] = useState<string[]>([])
-  const [answer, setAnswer] = useState<string[]>(["", "", ""])
+  // const [answer, setAnswer] = useState<string[]>(["", "", ""])
+  const [answer1, setAnswer1] = useState<string>("")
+  const [answer2, setAnswer2] = useState<string>("")
+  const [answer3, setAnswer3] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [menu, setMenu] = useRecoilState(menuAtom);
   const navigate = useNavigate();
+
 
   useEffect(() => {
     getRandomQuestions();
   }, []);
 
   const getRandomQuestions = async () => {
-
     try {
-      // const res: IQuestionList = await API.get("/test/test-user?message=asdfads");
-      // const res: IQuestionList = await API.get("/question/get-random-questions");
-      // const {question1, question2, question3} = res;
-      // const tempQustion = [];
-      // tempQustion.push(question1);
-      // tempQustion.push(question2);
-      // tempQustion.push(question3);
-      // setQuestion(tempQustion);
+      const res = await API.get("/question/get-random-questions");
+      const {question1, question2, question3} = res.data;
+      const tempQustion = [];
+      tempQustion.push(question1);
+      tempQustion.push(question2);
+      tempQustion.push(question3);
+      setQuestion(tempQustion);
     } catch (e: any) {
       console.log(e);
       if (e?.response?.status === 401) {
-        // navigate("/login", {replace: true});
+        navigate("/login", {replace: true});
       }
     }
 
+  }
+
+  const handleSubmit = async () => {
+    try {
+      setIsLoading(true);
+      const body = {
+        question1: question[0],
+        question2: question[1],
+        question3: question[2],
+        answer1: answer1,
+        answer2: answer2,
+        answer3: answer3,
+      }
+      await API.post("/question", body);
+      navigate("/main/diary")
+      setMenu({id: "1"})
+    } catch (e: any) {
+      alert(e?.response?.data?.message);
+    } finally {
+      setIsLoading(false);
+      // 현재 경로로 리디렉션하여 페이지를 리로드하는 효과
+      navigate(0);
+    }
   }
 
 
@@ -62,17 +92,22 @@ const DiaryInputPage = () => {
         <div style={{width: "600px"}}>
           <div className="question">
             {/*<span>Q. 질문을 입니다.</span>*/}
-            {question[step] && <TypingTextComponent text={question[step]} interval={30} key={step}/>}
+            {question[step] &&
+                <TypingTextComponent text={question[step]} interval={30} key={step}/>}
           </div>
           <div className="answer">
-            <TextArea rows={10} value={answer[step]} onChange={(e) => {
-              setAnswer((prevState) => {
-                prevState[step] = e.target.value;
-                return prevState;
-              })
-            }}
-                      style={{fontSize: "20px"}}
-            />
+            {step === 0 && <TextArea rows={10} value={answer1} onChange={(e) => {
+              setAnswer1(e.target.value);
+            }} style={{fontSize: "20px"}} key={step}
+            />}
+            {step === 1 && <TextArea rows={10} value={answer2} onChange={(e) => {
+              setAnswer2(e.target.value);
+            }} style={{fontSize: "20px"}} key={step}
+            />}
+            {step === 2 && <TextArea rows={10} value={answer3} onChange={(e) => {
+              setAnswer3(e.target.value);
+            }} style={{fontSize: "20px"}} key={step}
+            />}
           </div>
         </div>
         <div className="move-arrow">
@@ -100,29 +135,15 @@ const DiaryInputPage = () => {
                   setStep(2)
                 }}
                 style={progressButtonStyle}/>
-
-        {/*<Steps*/}
-        {/*    progressDot*/}
-        {/*    current={step}*/}
-        {/*    items={[*/}
-        {/*      {*/}
-        {/*        onClick: () => {*/}
-        {/*          setStep(0)*/}
-        {/*        }*/}
-        {/*      },*/}
-        {/*      {*/}
-        {/*        onClick: () => {*/}
-        {/*          setStep(1)*/}
-        {/*        }*/}
-        {/*      },*/}
-        {/*      {*/}
-        {/*        onClick: () => {*/}
-        {/*          setStep(2)*/}
-        {/*        }*/}
-        {/*      },*/}
-        {/*    ]}*/}
-        {/*/>*/}
       </div>
+      {step === 2 && <div>
+        <Button type="text"
+                style={{width: "100px", fontSize: "20px", marginTop: "30px", marginRight: "10px"}}
+                onClick={handleSubmit}>제출</Button>
+      </div>}
+      {isLoading &&
+          <LoadingEmoji/>
+      }
     </div>
   </>)
 }

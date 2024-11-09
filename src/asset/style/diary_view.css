@@ -1,0 +1,15 @@
+.diary-view-container{
+  display: flex;
+  flex-direction: column;
+}
+.diary-view-container .date-picker{
+  margin-bottom: 20px;
+}
+
+.diary-view-container .content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 100px;
+}

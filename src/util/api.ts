@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const API = axios.create({
-  // baseURL: 'https://port-0-ku-hackathon-2024-back-m32mykqd6aabb332.sel4.cloudtype.app/api',
-  baseURL: 'http://localhost:8080/api',
+  baseURL: 'https://port-0-ku-hackathon-2024-back-m32mykqd6aabb332.sel4.cloudtype.app/api',
+  // baseURL: 'http://localhost:8080/api',
   timeout: 30000,
   withCredentials: true,
 });

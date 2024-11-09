@@ -11,6 +11,9 @@ import {Route, Routes, useNavigate} from "react-router-dom";
 import DiaryPage from "./DiaryPage";
 import MyProfilePage from "./MyProfilePage";
 import GalleryPage from "./GalleryPage";
+import DiaryViewPage from "./DiaryViewPage";
+import {useRecoilState, useRecoilValue} from "recoil";
+import menuAtom from "../recoil/menu";
 
 const {Header, Sider, Content} = Layout;
 
@@ -21,6 +24,8 @@ const MainPage = () =>  {
     token: {colorBgContainer, borderRadiusLG},
   } = theme.useToken();
 
+  const [menu, setMenu] = useRecoilState(menuAtom);
+
   const navigate= useNavigate();
 
   const menuList = [
@@ -30,6 +35,8 @@ const MainPage = () =>  {
       label: '일기 작성',
       onClick: () => {
         navigate("/main/diary")
+        setMenu({id:"1"})
+
       }
     },
     {
@@ -38,6 +45,7 @@ const MainPage = () =>  {
       label: '감정 갤러리',
       onClick: () => {
         navigate("/main/gallery")
+        setMenu({id:"2"})
       }
     },
     {
@@ -46,6 +54,7 @@ const MainPage = () =>  {
       label: '마이페이지',
       onClick: () => {
         navigate("/main/my-profile")
+        setMenu({id:"3"})
       }
     },
   ]
@@ -58,7 +67,8 @@ const MainPage = () =>  {
           <Menu
               theme="dark"
               mode="inline"
-              defaultSelectedKeys={['1']}
+              // defaultSelectedKeys={['1']}
+              selectedKeys={[menu.id]}
               items={menuList}
           />
         </Sider>
@@ -89,6 +99,7 @@ const MainPage = () =>  {
           >
             <Routes>
               <Route path="/diary" element={<DiaryPage />}></Route>
+              {/*<Route path="/diary/view" element={<DiaryViewPage />}></Route>*/}
               <Route path="/my-profile" element={<MyProfilePage />}></Route>
               <Route path="/gallery" element={<GalleryPage />}></Route>
             </Routes>
