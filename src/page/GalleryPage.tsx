@@ -102,6 +102,11 @@ const GalleryPage = () => {
     handleGetMonthlyDiary(date);
   };
 
+  const replaceSpecialChars = (input: string) =>  {
+    // Replace CRLF with \n and DOUBLE_QUOTE with \"
+    return input.replace(/CRLF/g, '\n').replace(/DOUBLE_QUOTE/g, '\\"');
+  }
+
 
   return (<>
     <div className="diary-view-container">
@@ -114,7 +119,7 @@ const GalleryPage = () => {
               width={700}
               src={imageUrl}
           />
-          <TextArea rows={10} value={text} readOnly={true} style={{fontSize: "20px"}}/>
+          <TextArea rows={10} value={replaceSpecialChars(text)} readOnly={true} style={{fontSize: "20px"}}/>
         </>}
 
       </div>

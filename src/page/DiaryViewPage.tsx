@@ -11,6 +11,10 @@ export interface IDiaryViewPageProps {
 }
 
 const DiaryViewPage = (props: IDiaryViewPageProps) => {
+  const replaceSpecialChars = (input: string) =>  {
+    // Replace CRLF with \n and DOUBLE_QUOTE with \"
+    return input.replace(/CRLF/g, '\n').replace(/DOUBLE_QUOTE/g, '\\"');
+  }
   return (<>
     <div className="diary-view-container">
       <div className="content">
@@ -18,7 +22,7 @@ const DiaryViewPage = (props: IDiaryViewPageProps) => {
             width={700}
             src={props.imageUrl || "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"}
         />
-        <TextArea rows={10} value={props.text} readOnly={true} style={{fontSize: "20px"}}/>
+        <TextArea rows={10} value={replaceSpecialChars(props.text)} readOnly={true} style={{fontSize: "20px"}}/>
       </div>
     </div>
   </>)
