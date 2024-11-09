@@ -11,7 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
       <RecoilRoot>
-        <App/>
+        <div className="full-page">
+          <App/>
+        </div>
       </RecoilRoot>
     </React.StrictMode>
 );
