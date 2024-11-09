@@ -25,6 +25,7 @@ const GradientCalendarBar = ({ days, diaryList, onClick }: { days: number; diary
   const [hoveredDay, setHoveredDay] = useState<number | null>(null);
 
   useEffect(() => {
+    console.log(diaryList)
     const generatedColors = generateDailyColors(days, diaryList);
     setColors(generatedColors);
   }, [days, diaryList]);
