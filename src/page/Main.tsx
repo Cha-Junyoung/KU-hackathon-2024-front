@@ -3,6 +3,7 @@ import "../asset/style/main.css"
 import TypingTextComponent from "../component/TypingTextComponent";
 import {Button} from "antd";
 import {useNavigate} from "react-router-dom";
+import {API} from "../util/api";
 // import {useTypingAnime} from "../component/TypingTextComponent";
 
 
@@ -12,6 +13,17 @@ const Main = () => {
   // const { TypingTextDiv : ThirdText } = useTypingAnime("Third Line", 100, secondFlag)
 
   const navigate  = useNavigate();
+
+  const handleStart = async () => {
+    try{
+      const params = new URLSearchParams();
+      params.append('message', 'test login');
+      await API.post(`/test/test-user?${params.toString()}`)
+      navigate("/diary");
+    }catch (e) {
+      navigate("/login");
+    }
+  }
 
   return (<>
     <div>
@@ -23,7 +35,7 @@ const Main = () => {
           <TypingTextComponent text={'dummy data'} />
         </div>
         <div className="start-button">
-          <Button color="default" variant="outlined" style={{width: "100px"}} onClick={() => navigate("/login")}>
+          <Button color="default" variant="outlined" style={{width: "100px"}} onClick={handleStart}>
             시작하기
           </Button>
         </div>
