@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import "../asset/style/diary_view.css"
-import {DatePicker, DatePickerProps, Image} from "antd";
+import {Button, DatePicker, DatePickerProps, Image} from "antd";
 import dayjs from "dayjs";
 import TextArea from "antd/es/input/TextArea";
 import {API} from "../util/api";
 import GradientCalendarBar from "../component/GradientCalendarBar";
 import {useRecoilState} from "recoil";
-import menuAtom from "../recoil/menu"; // dayjs를 import
+import menuAtom from "../recoil/menu";
+import {useLocation} from "react-router-dom"; // dayjs를 import
 
 // import {useTypingAnime} from "../component/TypingTextComponent";
 
@@ -29,6 +30,8 @@ const GalleryPage = () => {
   const [hasData, setHasData] = useState<boolean>(false)
   const [diaryList, setDiaryList] = useState<IDiaryInfo[]>([])
   const [menu, setMenu] = useRecoilState(menuAtom);
+  const location = useLocation();
+
 
   useEffect(() => {
     handleGetMonthlyDiary(dayjs());
@@ -40,7 +43,9 @@ const GalleryPage = () => {
   }, [dateTime]);
 
 
-  const convertResponseToDiaryInfoArray = (response: { colors: Array<IDiaryInfo | null> }): IDiaryInfo[] => {
+  const convertResponseToDiaryInfoArray = (response: {
+    colors: Array<IDiaryInfo | null>
+  }): IDiaryInfo[] => {
     return response.colors
     .filter((item): item is IDiaryInfo => item !== null)
     .map((item) => ({
@@ -102,24 +107,51 @@ const GalleryPage = () => {
     handleGetMonthlyDiary(date);
   };
 
-  const replaceSpecialChars = (input: string) =>  {
+  const replaceSpecialChars = (input: string) => {
     // Replace CRLF with \n and DOUBLE_QUOTE with \"
     return input.replace(/CRLF/g, '\n').replace(/DOUBLE_QUOTE/g, '\\"');
+  }
+
+  const handleCopyClipBoard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert("클립보드에 링크가 복사되었어요.");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handleShare = async () => {
+    const body: IDateTime = {
+      year: dateTime.year().toString(),
+      month: (dateTime.month() + 1).toString(),
+      day: dateTime.date().toString(),
+    }
+    const res = await API.post("/share", body);
+    const {statistics_key} = res.data;
+    handleCopyClipBoard(window.location.href + `/${statistics_key}`);
   }
 
 
   return (<>
     <div className="diary-view-container">
-      <div className="date-picker">
-        <DatePicker onChange={onChange} picker="month" value={dateTime} allowClear={false}/>
+      <div className="header">
+        <div className="date-picker">
+          <DatePicker onChange={onChange} picker="month" value={dateTime} allowClear={false}/>
+        </div>
+        <Button color="default" variant="outlined" style={{width: "100px"}} onClick={handleShare}>
+          공유하기
+        </Button>
       </div>
+
       <div className="content">
         {hasData && <>
           <Image
               width={700}
               src={imageUrl}
           />
-          <TextArea rows={10} value={replaceSpecialChars(text)} readOnly={true} style={{fontSize: "20px"}}/>
+          <TextArea rows={10} value={replaceSpecialChars(text)} readOnly={true}
+                    style={{fontSize: "20px"}}/>
         </>}
 
       </div>
