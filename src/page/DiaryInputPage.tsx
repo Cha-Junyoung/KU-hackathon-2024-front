@@ -57,6 +57,18 @@ const DiaryInputPage = () => {
 
   const handleSubmit = async () => {
     try {
+      if (answer1.length == 0){
+        alert("첫 번째 질문을 채워주세요");
+        return;
+      }
+      if (answer2.length == 0){
+        alert("두 번째 질문을 채워주세요");
+        return;
+      }
+      if (answer3.length == 0){
+        alert("세 번째 질문을 채워주세요");
+        return;
+      }
       setIsLoading(true);
       const body = {
         question1: question[0],
@@ -138,6 +150,7 @@ const DiaryInputPage = () => {
       </div>
       {step === 2 && <div>
         <Button type="text"
+                variant="outlined"
                 style={{width: "100px", fontSize: "20px", marginTop: "15px", marginRight: "15px"}}
                 onClick={handleSubmit}>제출</Button>
       </div>}

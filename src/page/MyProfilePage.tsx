@@ -51,17 +51,23 @@ const MyProfilePage = () => {
   }
 
   const saveColorList = async () => {
-    const body = {
-      joy: joy?.replace("#", ""),
-      angry: angry?.replace("#", ""),
-      sad: sad?.replace("#", ""),
-      afraid: afraid?.replace("#", ""),
-      admiration: admiration?.replace("#", ""),
-      surprise: surprise?.replace("#", ""),
-      interest: interest?.replace("#", ""),
-      boring: boring?.replace("#", ""),
+    try{
+      const body = {
+        joy: joy?.replace("#", ""),
+        angry: angry?.replace("#", ""),
+        sad: sad?.replace("#", ""),
+        afraid: afraid?.replace("#", ""),
+        admiration: admiration?.replace("#", ""),
+        surprise: surprise?.replace("#", ""),
+        interest: interest?.replace("#", ""),
+        boring: boring?.replace("#", ""),
+      }
+      await API.post("/profile/update-color", body)
+      alert("색상이 저장되었습니다.")
+    } catch (e:any) {
+      alert(e?.response?.data?.message);
     }
-    await API.post("/profile/update-color", body)
+
   }
 
 
