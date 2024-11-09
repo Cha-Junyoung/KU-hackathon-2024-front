@@ -86,7 +86,7 @@ const MainPage = () => {
                   height: 64,
                 }}
             />
-            <span style={{fontSize: "20px", fontWeight: "bold"}}>아, 경</span>
+            <span style={{fontSize: "20px", fontWeight: "bold"}}>아:경</span>
           </Header>
           <Content
               style={{
