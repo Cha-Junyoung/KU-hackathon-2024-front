@@ -20,9 +20,9 @@ const SignUpPage = () => {
         password,
       };
       await API.post("/profile/join", requestBody)
-      navigate("/diary");
-    } catch (e) {
-      alert(e);
+      navigate("/main/diary");
+    } catch (e: any) {
+      alert(e?.response?.data?.message);
     }
 
   }
@@ -54,7 +54,8 @@ const SignUpPage = () => {
                 iconRender={(visible) => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
                 value={password} onChange={(e) => {
               setPassword(e.target.value)
-            }}/>
+            }}
+                onPressEnter={handleSignUpPage}/>
 
           </div>
 

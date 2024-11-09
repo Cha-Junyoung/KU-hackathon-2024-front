@@ -18,12 +18,12 @@ const LoginPage = () => {
         password,
         "remember-me": true
       };
-      await API.post("/login", requestBody,  {
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      await API.post("/login", requestBody, {
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
       })
-      navigate("/diary");
-    } catch (e) {
-      alert(e);
+      navigate("/main/diary");
+    } catch (e: any) {
+      alert(e?.response?.data?.message);
     }
 
   }
@@ -48,7 +48,8 @@ const LoginPage = () => {
                 iconRender={(visible) => (visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>)}
                 value={password} onChange={(e) => {
               setPassword(e.target.value)
-            }}/>
+            }}
+                onPressEnter={handleLogin}/>
 
           </div>
 
