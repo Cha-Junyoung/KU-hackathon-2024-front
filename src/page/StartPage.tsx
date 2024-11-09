@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "../asset/style/main.css"
 import TypingTextComponent from "../component/TypingTextComponent";
 import {Button} from "antd";
@@ -7,32 +7,42 @@ import {API} from "../util/api";
 // import {useTypingAnime} from "../component/TypingTextComponent";
 
 
-const StartPage = () => {
-  // const { animeFinishFlag : firstFlag, TypingTextDiv : FirstText } = useTypingAnime("First Line", 100)
-  // const { animeFinishFlag : secondFlag, TypingTextDiv : SecondText } = useTypingAnime("Second Line", 100, firstFlag)
-  // const { TypingTextDiv : ThirdText } = useTypingAnime("Third Line", 100, secondFlag)
+const intro: string[] = [
+  "예술은 감정과 가치관을 공유하는 매개이다.",
+  "예술은 인간의 내면을 비추고 연결하는 창이다.",
+  "예술은 현실 넘어의 상상을 통해 삶을 풍요롭게 한다."
+]
 
-  const navigate  = useNavigate();
+const StartPage = () => {
+  const [introMessage, setIntroMessage] = useState<string>("")
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setIntroMessage(getRandomIntro())
+  }, []);
+
+  const getRandomIntro = (): string => {
+    const randomIndex = Math.floor(Math.random() * intro.length);
+    return intro[randomIndex];
+  }
 
   const handleStart = async () => {
-    try{
+    try {
       const params = new URLSearchParams();
       params.append('message', 'test login');
       await API.post(`/test/test-user?${params.toString()}`)
       navigate("/main/diary");
-    }catch (e) {
+    } catch (e) {
       navigate("/login");
     }
   }
 
   return (<>
     <div>
-      {/*<FirstText />*/}
-      {/*<SecondText />*/}
-      {/*<ThirdText />*/}
       <div className="main-container">
         <div className="title">
-          <TypingTextComponent text={'dummy data'} pauseInterval={5000} />
+          <TypingTextComponent text={introMessage} pauseInterval={5000} interval={100}/>
         </div>
         <div className="start-button">
           <Button color="default" variant="outlined" style={{width: "100px"}} onClick={handleStart}>
