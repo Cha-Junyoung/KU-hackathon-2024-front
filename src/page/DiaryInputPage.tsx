@@ -89,24 +89,24 @@ const DiaryInputPage = () => {
             })
           }}/>}
         </div>
-        <div style={{width: "600px"}}>
-          <div className="question">
+        <div style={{width: "100%", marginTop: "70px", overflow: "visible", display: "flex", flexDirection: "column", alignItems: "center"}}>
+          <div className="question" style={{width: "100%", overflow: "visible", display: "flex", justifyContent: "center"}}>
             {/*<span>Q. 질문을 입니다.</span>*/}
             {question[step] &&
                 <TypingTextComponent text={question[step]} interval={30} key={step}/>}
           </div>
-          <div className="answer">
+          <div className="answer" style={{width: "600px"}}>
             {step === 0 && <TextArea rows={10} value={answer1} onChange={(e) => {
               setAnswer1(e.target.value);
-            }} style={{fontSize: "20px"}} key={step}
+            }} style={{fontSize: "20px", border: "none", outline: "none", margin: "10px 0px 50px"}} key={step}
             />}
             {step === 1 && <TextArea rows={10} value={answer2} onChange={(e) => {
               setAnswer2(e.target.value);
-            }} style={{fontSize: "20px"}} key={step}
+            }} style={{fontSize: "20px", border: "none", outline: "none", margin: "10px 0px 50px"}} key={step}
             />}
             {step === 2 && <TextArea rows={10} value={answer3} onChange={(e) => {
               setAnswer3(e.target.value);
-            }} style={{fontSize: "20px"}} key={step}
+            }} style={{fontSize: "20px", border: "none", outline: "none", margin: "10px 0px 50px"}} key={step}
             />}
           </div>
         </div>
@@ -119,8 +119,8 @@ const DiaryInputPage = () => {
         </div>
 
       </div>
-      <div>
-        <Button type={"primary"} shape="circle"
+      <div style={{marginTop: "25px"}}>
+        <Button  type={"primary"} shape="circle"
                 onClick={() => {
                   setStep(0)
                 }}
@@ -138,7 +138,7 @@ const DiaryInputPage = () => {
       </div>
       {step === 2 && <div>
         <Button type="text"
-                style={{width: "100px", fontSize: "20px", marginTop: "30px", marginRight: "10px"}}
+                style={{width: "100px", fontSize: "20px", marginTop: "15px", marginRight: "15px"}}
                 onClick={handleSubmit}>제출</Button>
       </div>}
       {isLoading &&
