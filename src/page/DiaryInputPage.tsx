@@ -114,11 +114,11 @@ const DiaryInputPage = () => {
               setAnswer1(e.target.value);
             }} style={{fontSize: "20px", borderColor:"#C6E7FF", outline: "none", margin: "10px 0px 50px"}} key={step}
             />}
-            {step === 1 && <TextArea rows={10} value={answer2} onChange={(e) => {
+            {step === 1 && <TextArea rows={3} value={answer2} onChange={(e) => {
               setAnswer2(e.target.value);
             }} style={{fontSize: "20px", borderColor:"#C6E7FF", outline: "none", margin: "10px 0px 50px"}} key={step}
             />}
-            {step === 2 && <TextArea rows={10} value={answer3} onChange={(e) => {
+            {step === 2 && <TextArea rows={3} value={answer3} onChange={(e) => {
               setAnswer3(e.target.value);
             }} style={{fontSize: "20px", borderColor:"#C6E7FF", outline: "none", margin: "10px 0px 50px"}} key={step}
             />}
