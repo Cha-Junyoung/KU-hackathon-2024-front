@@ -58,7 +58,7 @@ const LoginPage = () => {
           <div className="button-container">
             <Button type="text" style={{width: "100px"}} color={"primary"} variant={"outlined"}
                     onClick={handleLogin}>로그인</Button>
-            <Button type="text" style={{width: "100px"}}
+            <Button type="text" style={{width: "100px"}} variant={"outlined"} color={"default"}
                     onClick={() => navigate("/signup")}>회원가입</Button>
           </div>
 
