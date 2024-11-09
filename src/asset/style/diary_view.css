@@ -6,6 +6,12 @@
   margin-bottom: 20px;
 }
 
+.diary-view-container .header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .diary-view-container .content{
   display: flex;
   flex-direction: row;

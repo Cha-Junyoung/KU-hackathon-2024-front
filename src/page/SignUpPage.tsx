@@ -61,8 +61,8 @@ const SignUpPage = () => {
           </div>
 
           <div className="button-container">
-            <Button type="text" style={{width: "100px", background: "#F67280", color: "white"}}
-                    onClick={handleSignUpPage}>회원가입하기</Button>
+            <Button type="text" style={{width: "100px"}} color={"primary"} variant={"outlined"}
+                    onClick={handleSignUpPage}>회원가입</Button>
           </div>
 
 
