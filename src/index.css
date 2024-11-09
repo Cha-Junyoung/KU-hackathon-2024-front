@@ -1,13 +1,42 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  /*font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',*/
+  /*  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
+  /*  sans-serif;*/
+  font-family:  'Gyeonggi_Batang_Regular' , sans-serif; ;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override Ant Design's layout font */
+:where(.css-dev-only-do-not-override-apn68).ant-layout {
+  font-family: 'Gyeonggi_Batang_Regular', sans-serif !important;
+}
+:where(.css-dev-only-do-not-override-apn68).ant-menu {
+  font-family: 'Gyeonggi_Batang_Regular', sans-serif !important;
+}
+:where(.css-dev-only-do-not-override-apn68).ant-input {
+  font-family: 'Gyeonggi_Batang_Regular', sans-serif !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: 'Gyeonggi_Batang_Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GyeongGiMedium'; /* 사용할 폰트의 이름을 정의 */
+  src: url('font/Title_Medium.otf'); /* 폰트 파일의 위치 */
+}
+
+@font-face {
+  font-family: 'GyeongGiLight';
+  src: url('font/Title_Light.otf'); /* 폰트 파일의 위치 */
 }
