@@ -81,9 +81,11 @@ const DiaryInputPage = () => {
       await API.post("/question", body);
       navigate("/main/diary")
       setMenu({id: "1"})
+      setIsLoading(false);
+      // 현재 경로로 리디렉션하여 페이지를 리로드하는 효과
+      navigate(0);
     } catch (e: any) {
       alert(e?.response?.data?.message);
-    } finally {
       setIsLoading(false);
       // 현재 경로로 리디렉션하여 페이지를 리로드하는 효과
       navigate(0);
