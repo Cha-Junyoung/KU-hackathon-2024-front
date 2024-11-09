@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const API = axios.create({
-  baseURL: 'https://port-0-ku-hackathon-2024-back-m32mykqd6aabb332.sel4.cloudtype.app/api',
+  baseURL: `${process.env.REACT_APP_API_URL}`,
   // baseURL: 'http://localhost:8080/api',
   timeout: 60000,
   withCredentials: true,
