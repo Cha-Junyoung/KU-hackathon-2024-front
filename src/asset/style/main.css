@@ -17,6 +17,22 @@ html, body, #root {
   height: 100vh; /* 전체 뷰포트 높이 */
   overflow-x: hidden;
   overflow-y: hidden;
+  /*background-image: url("src/asset/image/start_page_background.png");*/
+}
+.full-page::after{
+  width: 100%;
+  height: 100%;
+  content: "";
+  /*overflow-x: hidden;*/
+  /*overflow-y: hidden;*/
+  background-image: url("/public/image/start_page_background.png");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.1;
   /*background-color: lightblue;*/
 }
 
@@ -29,7 +45,9 @@ html, body, #root {
 }
 
 .main-container .title{
-  align-content: center;
-  height: 70vh;
+  /*align-content: center;*/
+  padding-top: 200px;
+  height: 25vh;
   font-size: 50px;
+  font-weight: bold;
 }

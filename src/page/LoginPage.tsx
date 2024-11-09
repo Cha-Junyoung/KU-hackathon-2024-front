@@ -34,7 +34,7 @@ const LoginPage = () => {
       <>
         <div className="login-container">
           <div className="title">
-            그대들
+            아, 경
           </div>
           <div className="input-container">
             <span className="title">Email</span>

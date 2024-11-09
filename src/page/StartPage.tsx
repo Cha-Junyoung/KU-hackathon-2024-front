@@ -4,13 +4,12 @@ import TypingTextComponent from "../component/TypingTextComponent";
 import {Button} from "antd";
 import {useNavigate} from "react-router-dom";
 import {API} from "../util/api";
-// import {useTypingAnime} from "../component/TypingTextComponent";
 
 
 const intro: string[] = [
   "예술은 감정과 가치관을 공유하는 매개이다.",
   "예술은 인간의 내면을 비추고 연결하는 창이다.",
-  "예술은 현실 넘어의 상상을 통해 삶을 풍요롭게 한다."
+  "예술은 현실 너머의 상상을 통해 삶을 풍요롭게 한다."
 ]
 
 const StartPage = () => {
@@ -45,7 +44,7 @@ const StartPage = () => {
           <TypingTextComponent text={introMessage} pauseInterval={5000} interval={100}/>
         </div>
         <div className="start-button">
-          <Button color="default" variant="outlined" style={{width: "100px"}} onClick={handleStart}>
+          <Button color="default" variant="outlined"  style={{width: "200px", height: "50px", fontWeight:"bold", fontSize:"18px"}} onClick={handleStart}>
             시작하기
           </Button>
         </div>

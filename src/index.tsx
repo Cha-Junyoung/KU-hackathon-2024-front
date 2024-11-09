@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {RecoilRoot} from "recoil";
+import background from "./asset/image/start_page_background.jpeg";
+
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -11,7 +13,13 @@ const root = ReactDOM.createRoot(
 root.render(
     // <React.StrictMode>
       <RecoilRoot>
-        <div className="full-page">
+        <div className="full-page" style={{
+          // backgroundImage: `url(${background})`,
+          // backgroundSize: 'cover',
+          // backgroundPosition: 'center',
+          // backgroundColor: 'rgba(0, 0, 0, 0.5)', // 색상 + 투명도 적용
+          // opacity: 0.5,
+        }}>
           <App/>
         </div>
       </RecoilRoot>

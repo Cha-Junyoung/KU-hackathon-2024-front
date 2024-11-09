@@ -36,7 +36,7 @@ const SignUpPage = () => {
           </div>
           <div className="input-container">
             <span className="title">별칭</span>
-            <Input placeholder="Input Nicname" value={nickname} style={{width: "100%"}}
+            <Input placeholder="Input Nickname" value={nickname} style={{width: "100%"}}
                    onChange={(e) => {
                      setNickname(e.target.value)
                    }}/>

@@ -13,6 +13,7 @@ import MyProfilePage from "./MyProfilePage";
 import GalleryPage from "./GalleryPage";
 import {useRecoilState} from "recoil";
 import menuAtom from "../recoil/menu";
+import AnonymousGalleryPage from "./AnonymousGalleryPage";
 
 const {Header, Sider, Content} = Layout;
 
@@ -99,9 +100,9 @@ const MainPage = () => {
           >
             <Routes>
               <Route path="/diary" element={<DiaryPage/>}></Route>
-              {/*<Route path="/diary/view" element={<DiaryViewPage />}></Route>*/}
               <Route path="/my-profile" element={<MyProfilePage/>}></Route>
               <Route path="/gallery" element={<GalleryPage/>}></Route>
+                <Route path="/gallery/:diaryId" element={<AnonymousGalleryPage/>}></Route>
             </Routes>
           </Content>
         </Layout>
