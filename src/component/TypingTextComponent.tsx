@@ -118,7 +118,7 @@ const TypingTextComponent = ({ text, interval, pauseInterval }: AnimationProps) 
   }, [text, textCount, isTypingPaused]); //해당 상태들이 변경될 때마다 useEffect가 다시 실행 됨
 
   return (
-      <p className="landing-p whitespace-pre-line break-normal" style={{ fontSize: '30px', display: 'flex', justifyContent: 'center' }}>
+      <p className="landing-p whitespace-pre-line break-normal" style={{ fontSize: '40px', display: 'flex', justifyContent: 'center' }}>
         {sequence}
         <span className='inline-block align-top w-0.5 h-[1em] bg-white ml-1 blink'/>
       </p>

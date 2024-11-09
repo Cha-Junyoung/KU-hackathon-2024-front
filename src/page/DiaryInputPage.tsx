@@ -96,17 +96,17 @@ const DiaryInputPage = () => {
                 <TypingTextComponent text={question[step]} interval={30} key={step}/>}
           </div>
           <div className="answer" style={{width: "600px"}}>
-            {step === 0 && <TextArea rows={10} value={answer1} onChange={(e) => {
+            {step === 0 && <TextArea rows={3} value={answer1} onChange={(e) => {
               setAnswer1(e.target.value);
-            }} style={{fontSize: "20px", border: "none", outline: "none", margin: "10px 0px 50px"}} key={step}
+            }} style={{fontSize: "20px", borderColor:"#C6E7FF", outline: "none", margin: "10px 0px 50px"}} key={step}
             />}
             {step === 1 && <TextArea rows={10} value={answer2} onChange={(e) => {
               setAnswer2(e.target.value);
-            }} style={{fontSize: "20px", border: "none", outline: "none", margin: "10px 0px 50px"}} key={step}
+            }} style={{fontSize: "20px", borderColor:"#C6E7FF", outline: "none", margin: "10px 0px 50px"}} key={step}
             />}
             {step === 2 && <TextArea rows={10} value={answer3} onChange={(e) => {
               setAnswer3(e.target.value);
-            }} style={{fontSize: "20px", border: "none", outline: "none", margin: "10px 0px 50px"}} key={step}
+            }} style={{fontSize: "20px", borderColor:"#C6E7FF", outline: "none", margin: "10px 0px 50px"}} key={step}
             />}
           </div>
         </div>
