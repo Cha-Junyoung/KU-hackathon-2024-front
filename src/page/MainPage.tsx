@@ -7,14 +7,49 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import {Button, Layout, Menu, theme} from "antd";
+import {Route, Routes, useNavigate} from "react-router-dom";
+import DiaryPage from "./DiaryPage";
+import MyProfilePage from "./MyProfilePage";
+import GalleryPage from "./GalleryPage";
 
 const {Header, Sider, Content} = Layout;
 
-const Diary = () =>  {
+
+const MainPage = () =>  {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: {colorBgContainer, borderRadiusLG},
   } = theme.useToken();
+
+  const navigate= useNavigate();
+
+  const menuList = [
+    {
+      key: '1',
+      icon: <UserOutlined/>,
+      label: '일기 작성',
+      onClick: () => {
+        navigate("/main/diary")
+      }
+    },
+    {
+      key: '2',
+      icon: <VideoCameraOutlined/>,
+      label: '감정 갤러리',
+      onClick: () => {
+        navigate("/main/gallery")
+      }
+    },
+    {
+      key: '3',
+      icon: <UploadOutlined/>,
+      label: '마이페이지',
+      onClick: () => {
+        navigate("/main/my-profile")
+      }
+    },
+  ]
+
   return (
 
       <Layout>
@@ -24,23 +59,7 @@ const Diary = () =>  {
               theme="dark"
               mode="inline"
               defaultSelectedKeys={['1']}
-              items={[
-                {
-                  key: '1',
-                  icon: <UserOutlined/>,
-                  label: 'nav 1',
-                },
-                {
-                  key: '2',
-                  icon: <VideoCameraOutlined/>,
-                  label: 'nav 2',
-                },
-                {
-                  key: '3',
-                  icon: <UploadOutlined/>,
-                  label: 'nav 3',
-                },
-              ]}
+              items={menuList}
           />
         </Sider>
         <Layout style={{
@@ -68,7 +87,11 @@ const Diary = () =>  {
                 borderRadius: borderRadiusLG,
               }}
           >
-            Content
+            <Routes>
+              <Route path="/diary" element={<DiaryPage />}></Route>
+              <Route path="/my-profile" element={<MyProfilePage />}></Route>
+              <Route path="/gallery" element={<GalleryPage />}></Route>
+            </Routes>
           </Content>
         </Layout>
       </Layout>
@@ -76,4 +99,4 @@ const Diary = () =>  {
 
 }
 
-export default Diary;
+export default MainPage;

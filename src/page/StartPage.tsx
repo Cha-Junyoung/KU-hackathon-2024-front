@@ -7,7 +7,7 @@ import {API} from "../util/api";
 // import {useTypingAnime} from "../component/TypingTextComponent";
 
 
-const Main = () => {
+const StartPage = () => {
   // const { animeFinishFlag : firstFlag, TypingTextDiv : FirstText } = useTypingAnime("First Line", 100)
   // const { animeFinishFlag : secondFlag, TypingTextDiv : SecondText } = useTypingAnime("Second Line", 100, firstFlag)
   // const { TypingTextDiv : ThirdText } = useTypingAnime("Third Line", 100, secondFlag)
@@ -19,7 +19,7 @@ const Main = () => {
       const params = new URLSearchParams();
       params.append('message', 'test login');
       await API.post(`/test/test-user?${params.toString()}`)
-      navigate("/diary");
+      navigate("/main/diary");
     }catch (e) {
       navigate("/login");
     }
@@ -45,4 +45,4 @@ const Main = () => {
   </>)
 }
 
-export default Main;
+export default StartPage;
