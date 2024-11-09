@@ -2,23 +2,22 @@ import React, {useState} from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
+  ReadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
+  AppstoreOutlined,
 } from '@ant-design/icons';
 import {Button, Layout, Menu, theme} from "antd";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import DiaryPage from "./DiaryPage";
 import MyProfilePage from "./MyProfilePage";
 import GalleryPage from "./GalleryPage";
-import DiaryViewPage from "./DiaryViewPage";
-import {useRecoilState, useRecoilValue} from "recoil";
+import {useRecoilState} from "recoil";
 import menuAtom from "../recoil/menu";
 
 const {Header, Sider, Content} = Layout;
 
 
-const MainPage = () =>  {
+const MainPage = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: {colorBgContainer, borderRadiusLG},
@@ -26,35 +25,35 @@ const MainPage = () =>  {
 
   const [menu, setMenu] = useRecoilState(menuAtom);
 
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   const menuList = [
     {
       key: '1',
-      icon: <UserOutlined/>,
-      label: '일기 작성',
+      icon: <ReadOutlined/>,
+      label: '오늘의 질문',
       onClick: () => {
         navigate("/main/diary")
-        setMenu({id:"1"})
+        setMenu({id: "1"})
 
       }
     },
     {
       key: '2',
-      icon: <VideoCameraOutlined/>,
+      icon: <AppstoreOutlined />,
       label: '감정 갤러리',
       onClick: () => {
         navigate("/main/gallery")
-        setMenu({id:"2"})
+        setMenu({id: "2"})
       }
     },
     {
       key: '3',
-      icon: <UploadOutlined/>,
+      icon: <UserOutlined/>,
       label: '마이페이지',
       onClick: () => {
         navigate("/main/my-profile")
-        setMenu({id:"3"})
+        setMenu({id: "3"})
       }
     },
   ]
@@ -86,6 +85,7 @@ const MainPage = () =>  {
                   height: 64,
                 }}
             />
+            <span style={{fontSize: "20px", fontWeight: "bold"}}>아, 경</span>
           </Header>
           <Content
               style={{
@@ -98,10 +98,10 @@ const MainPage = () =>  {
               }}
           >
             <Routes>
-              <Route path="/diary" element={<DiaryPage />}></Route>
+              <Route path="/diary" element={<DiaryPage/>}></Route>
               {/*<Route path="/diary/view" element={<DiaryViewPage />}></Route>*/}
-              <Route path="/my-profile" element={<MyProfilePage />}></Route>
-              <Route path="/gallery" element={<GalleryPage />}></Route>
+              <Route path="/my-profile" element={<MyProfilePage/>}></Route>
+              <Route path="/gallery" element={<GalleryPage/>}></Route>
             </Routes>
           </Content>
         </Layout>

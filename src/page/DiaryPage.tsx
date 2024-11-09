@@ -34,9 +34,9 @@ const DiaryPage = () => {
         day: now.date().toString(),
       }
       const res = await API.get("/statistics/day", {params});
-      const {imageUrl, text} = res.data;
+      const {image, text} = res.data;
       setText(text)
-      setImageUrl(imageUrl)
+      setImageUrl(image)
       setMode("view")
 
     } catch (e: any) {
