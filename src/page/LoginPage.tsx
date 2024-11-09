@@ -8,7 +8,6 @@ import {EyeInvisibleOutlined, EyeTwoTone} from '@ant-design/icons';
 const LoginPage = () => {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
-  const [nickName, setNickName] = useState<string>("")
   const navigate = useNavigate();
 
   const handleLogin = async () => {

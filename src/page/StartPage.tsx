@@ -32,7 +32,7 @@ const StartPage = () => {
       {/*<ThirdText />*/}
       <div className="main-container">
         <div className="title">
-          <TypingTextComponent text={'dummy data'} />
+          <TypingTextComponent text={'dummy data'} pauseInterval={5000} />
         </div>
         <div className="start-button">
           <Button color="default" variant="outlined" style={{width: "100px"}} onClick={handleStart}>
