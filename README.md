@@ -1,5 +1,5 @@
-# 아, 경 (Front-end)
-아, 경 Front-end repository 입니다.
+# 아:경 (Front-end)
+아:경 Front-end repository 입니다.
 
 ---
 
