@@ -109,7 +109,7 @@ const GalleryPage = () => {
 
   const replaceSpecialChars = (input: string) => {
     // Replace CRLF with \n and DOUBLE_QUOTE with \"
-    return input.replace(/CRLF/g, '\n').replace(/DOUBLE_QUOTE/g, '\\"');
+    return input.replace(/CRLF/g, '\n').replace(/DOUBLE_QUOTE/g, '"');
   }
 
   const handleCopyClipBoard = async (text: string) => {

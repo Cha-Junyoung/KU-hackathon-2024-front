@@ -11,10 +11,11 @@ export interface IDiaryViewPageProps {
 }
 
 const DiaryViewPage = (props: IDiaryViewPageProps) => {
-  const replaceSpecialChars = (input: string) =>  {
+  const replaceSpecialChars = (input: string) => {
     // Replace CRLF with \n and DOUBLE_QUOTE with \"
-    return input.replace(/CRLF/g, '\n').replace(/DOUBLE_QUOTE/g, '\\"');
+    return input.replace(/CRLF/g, '\n').replace(/DOUBLE_QUOTE/g, '"');
   }
+
   return (<>
     <div className="diary-view-container">
       <div className="content">

@@ -51,6 +51,7 @@ const AnonymousGalleryPage = () => {
       setText(text);
       setDateTime(date);
       setHasData(true);
+      console.log(replaceSpecialChars(text))
     } catch (e: any) {
       setHasData(false);
       alert(e?.response?.data?.message);
@@ -62,7 +63,7 @@ const AnonymousGalleryPage = () => {
 
   const replaceSpecialChars = (input: string) => {
     // Replace CRLF with \n and DOUBLE_QUOTE with \"
-    return input.replace(/CRLF/g, '\n').replace(/DOUBLE_QUOTE/g, '\\"');
+    return input.replace(/CRLF/g, '\n').replace(/DOUBLE_QUOTE/g, '"');
   }
 
 
