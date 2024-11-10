@@ -1,7 +1,102 @@
-# 아, 경 Front Project
+# 아, 경 (Front-end)
+아, 경 Front-end repository 입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
+### 프로젝트 구조
+```
+├── README.md
+├── package.json
+├── public
+│         ├── favicon.ico
+│         ├── image
+│         │         ├── start_page_background.jpeg
+│         │         └── start_page_background.png
+│         ├── index.html
+│         ├── logo192.png
+│         ├── logo512.png
+│         ├── manifest.json
+│         └── robots.txt
+├── src
+│         ├── App.css
+│         ├── App.test.tsx
+│         ├── App.tsx
+│         ├── asset
+│         │         ├── image
+│         │         └── style
+│         ├── component
+│         │         ├── GradientBar.tsx
+│         │         ├── GradientCalendarBar.tsx
+│         │         ├── LoadingEmoji.tsx
+│         │         ├── Router.tsx
+│         │         └── TypingTextComponent.tsx
+│         ├── font
+│         │         ├── Title_Light.otf
+│         │         └── Title_Medium.otf
+│         ├── index.css
+│         ├── index.tsx
+│         ├── logo.svg
+│         ├── page
+│         │         ├── AnonymousGalleryPage.tsx
+│         │         ├── AxiosTest.tsx
+│         │         ├── DiaryInputPage.tsx
+│         │         ├── DiaryPage.tsx
+│         │         ├── DiaryViewPage.tsx
+│         │         ├── GalleryPage.tsx
+│         │         ├── LoginPage.tsx
+│         │         ├── MainPage.tsx
+│         │         ├── MyProfilePage.tsx
+│         │         ├── SignUpPage.tsx
+│         │         └── StartPage.tsx
+│         ├── react-app-env.d.ts
+│         ├── recoil
+│         │         ├── menu
+│         │         └── place
+│         ├── reportWebVitals.ts
+│         ├── setupTests.ts
+│         ├── type
+│         └── util
+│             └── api.ts
+├── tree-front.txt
+├── tsconfig.json
+└── yarn.lock
+
+
+```
+###
+
+---
+
+### 기술 명세서
+Recoil : 전역 상태 관리
+
+react-router-dom : navigate 및 route 관리
+
+UI Library : ant design
+
+
+###
+
+---
+
+### Component 명세서
+LoadingEmoji  : 로딩 중 상태 창
+
+
+GradientCalendarBar : 일 별 emotion color bar
+
+
+TypingTextComponent : text typing animation component
+
+
+###
+
+---
+### 배포 관련 설정
+REACT_APP_API_URL: server api url
+
+###
+---
 ## Available Scripts
 
 In the project directory, you can run:
@@ -38,9 +133,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
