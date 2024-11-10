@@ -18,6 +18,15 @@ body {
 :where(.css-dev-only-do-not-override-apn68).ant-input {
   font-family: 'Gyeonggi_Batang_Regular', sans-serif !important;
 }
+:where(.css-apn68).ant-layout {
+  font-family: 'Gyeonggi_Batang_Regular', sans-serif !important;
+}
+:where(.css-apn68).ant-menu {
+  font-family: 'Gyeonggi_Batang_Regular', sans-serif !important;
+}
+:where(.css-apn68).ant-input {
+  font-family: 'Gyeonggi_Batang_Regular', sans-serif !important;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
